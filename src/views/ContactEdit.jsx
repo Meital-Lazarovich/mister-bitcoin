@@ -44,7 +44,7 @@ export default class ContactEdit extends React.Component {
         return (
             <section className="contact-edit">
                 <div className="actions">
-                    <Link to={`contact/${contact.id}`}>Back</Link>
+                    <Link to={`/contact/${contact._id}`}>Back</Link>
                     {!isNew && <button onClick={this.deleteContact}>Delete</button>}
                 </div>
                 <form onSubmit={this.saveContact} className="flex-center column">

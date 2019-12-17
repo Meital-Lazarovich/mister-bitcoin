@@ -11,14 +11,14 @@ export default class HomePage extends React.Component {
     render() {
         const { user, rate } = this.state
         if (rate && user) return (
-            <section class="home-page">
+            <section className="home-page">
                 <h1>Hello, {user.name}</h1>
                 <h3>Coins: {user.coins}</h3>
                 <h3>BTC: {rate}</h3>
             </section>
         )
         else return (
-            <h1>Something went wrong...</h1>
+            <div></div>
         )
     }
     async componentDidMount() {

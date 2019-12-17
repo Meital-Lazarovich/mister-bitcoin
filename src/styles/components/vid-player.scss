@@ -1,0 +1,15 @@
+.vid-player {
+    flex-grow: 1;
+
+    .vid {
+        border: 3px solid $clr1;
+        border-radius: 5px;
+        width: 500px;
+        height: 300px;
+        margin-top: 10px;
+        &.empty {
+            color: #716e6e;
+            border: 2px solid $clr1;
+        }
+    }
+}

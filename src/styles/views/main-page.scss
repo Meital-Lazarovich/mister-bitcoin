@@ -1,0 +1,16 @@
+.main-page {
+    .welcome {
+        height: 200px;
+        background-color: $clr3;
+        margin-top: 50px;
+    }
+    @media (max-width: 1040px) {
+        .content {
+            flex-direction: column-reverse;
+            align-items: center;
+            .vid-player {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

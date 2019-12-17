@@ -1,0 +1,14 @@
+// SETUP
+@import 'setup/variables';
+
+// BASICS
+@import 'basics/helpers';
+@import 'basics/base';
+
+// VIEWS 
+@import 'views/main-page';
+
+// COMPONENTS
+@import 'components/vid-preview';
+@import 'components/vid-player';
+@import 'components/search-bar';

@@ -3,6 +3,7 @@ import React from 'react';
 import ContactService from '../services/ContactService'
 import ContactList from '../cmps/ContactList'
 import ContactFilter from '../cmps/ContactFilter';
+import {Link} from 'react-router-dom'
 
 export default class ContactPage extends React.Component {
     state = {
@@ -20,6 +21,7 @@ export default class ContactPage extends React.Component {
         if (contacts) return (
             <section className="contact-page flex-center column">
                 <ContactFilter handleFilter={this.handleFilter}></ContactFilter>
+                <Link to={'/contact/edit'}>Add new contact</Link>
                 <ContactList contacts={contacts}></ContactList>
             </section>
         )

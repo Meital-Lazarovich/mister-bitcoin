@@ -2,14 +2,27 @@ import React from 'react';
 
 import ContactService from '../services/ContactService'
 import ContactList from '../cmps/ContactList'
+import ContactFilter from '../cmps/ContactFilter';
 
 export default class ContactPage extends React.Component {
     state = {
-        contacts: []
+        contacts: [],
     }
+
+    handleFilter = async (val) => {
+        const filter = {term: val}
+        const contacts = await ContactService.getContacts(filter)
+        this.setState({ contacts })
+    }
+
     render() {
         const { contacts } = this.state
-        if (contacts) return <ContactList contacts={contacts}></ContactList>
+        if (contacts) return (
+            <section className="contact-page flex-center column">
+                <ContactFilter handleFilter={this.handleFilter}></ContactFilter>
+                <ContactList contacts={contacts}></ContactList>
+            </section>
+        )
         else return <div>no contacts</div>
     }
     async componentDidMount() {

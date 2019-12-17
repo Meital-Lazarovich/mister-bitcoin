@@ -1,5 +1,6 @@
 import React from 'react';
 import ContactService from '../services/ContactService';
+import {Link} from 'react-router-dom';
 
 export default class ContactEdit extends React.Component {
     state = {
@@ -7,7 +8,8 @@ export default class ContactEdit extends React.Component {
             name: '',
             email: '',
             phone: ''
-        }
+        },
+        isNew: true
     }
 
     updateContact = (ev, field) => {
@@ -25,13 +27,26 @@ export default class ContactEdit extends React.Component {
     saveContact = async ev => {
         ev.preventDefault()
         await ContactService.saveContact(this.state.contact)
+        this.goToContactPage()
+    }
+
+    deleteContact = async () => {
+        await ContactService.deleteContact(this.state.contact._id)
+        this.goToContactPage()
+    }
+
+    goToContactPage = () => {
         this.props.history.push('/contact')
     }
 
     render() {
-        const { contact } = this.state
+        const { contact, isNew } = this.state
         return (
             <section className="contact-edit">
+                <div className="actions">
+                    <Link to={`contact/${contact.id}`}>Back</Link>
+                    {!isNew && <button onClick={this.deleteContact}>Delete</button>}
+                </div>
                 <form onSubmit={this.saveContact} className="flex-center column">
                     <label> Name:
                         <input type="text" value={contact.name} onChange={ev => this.updateContact(ev, 'name')} />
@@ -51,7 +66,7 @@ export default class ContactEdit extends React.Component {
         const id = this.props.match.params.id
         if (id) {
             const contact = await ContactService.getContactById(id)
-            this.setState({ contact })
+            this.setState({ contact, isNew: false })
         }
     }
 }

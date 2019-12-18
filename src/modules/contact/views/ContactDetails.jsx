@@ -1,14 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {loadCurrContact} from '../actions';
+import {connect} from 'react-redux'
 
-import ContactService from '../ContactService';
-
-export default class ContactDetails extends React.Component {
-    state = {
-        contact: null
+class ContactDetails extends React.Component {
+    async componentDidMount() {
+        const { id } = this.props.match.params
+        this.props.loadCurrContact(id)
     }
     render() {
-        const { contact } = this.state
+        const { contact } = this.props
         if (contact) return (
             <section className="contact-details">
                 <div className="nav">
@@ -22,9 +23,19 @@ export default class ContactDetails extends React.Component {
         )
         else return <h1>Unknown contact</h1>
     }
-    async componentDidMount() {
-        const { id } = this.props.match.params
-        const contact = await ContactService.getContactById(id)
-        this.setState({ contact })
+}
+
+const mapStateToProps = (state) => {
+    return {
+        contact: state.contact.currContact
     }
 }
+
+const mapDispatchToProps = {
+    loadCurrContact
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ContactDetails)

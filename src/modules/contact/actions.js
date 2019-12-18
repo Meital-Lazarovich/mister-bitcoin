@@ -21,3 +21,25 @@ export const loadContacts = (filter) => {
         return dispatch(setContacts(contacts))
     }
 }
+
+const updateContact = (contact) => {
+    return {type: 'SAVE_CONTACT', contact}
+}
+
+export const saveContact = (contact) => {
+    return async (dispatch) => {
+        const savedContact = await ContactService.saveContact(contact)
+        return dispatch(updateContact(savedContact))
+    }
+}
+
+const removeContact = (id) => {
+    return {type: 'DELETE_CONTACT', id}
+}
+
+export const deleteContact = (id) => {
+    return async (dispatch) => {
+        await ContactService.deleteContact(id)
+        return dispatch(removeContact(id))
+    }
+}

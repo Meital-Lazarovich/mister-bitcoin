@@ -1,8 +1,9 @@
 import React from 'react';
-import ContactService from '../ContactService';
 import {Link} from 'react-router-dom';
+import {loadCurrContact, saveContact, deleteContact} from '../actions';
+import {connect} from 'react-redux'
 
-export default class ContactEdit extends React.Component {
+class ContactEdit extends React.Component {
     state = {
         contact: {
             name: '',
@@ -10,6 +11,14 @@ export default class ContactEdit extends React.Component {
             phone: ''
         },
         isNew: true
+    }
+    
+    async componentDidMount() {
+        const id = this.props.match.params.id
+        if (id) {
+            this.props.loadCurrContact(id)
+            this.setState({contact: this.props.contact, isNew: false})
+        }
     }
 
     updateContact = (ev, field) => {
@@ -26,12 +35,12 @@ export default class ContactEdit extends React.Component {
 
     saveContact = async ev => {
         ev.preventDefault()
-        await ContactService.saveContact(this.state.contact)
+        await this.props.saveContact(this.state.contact)
         this.goToContactPage()
     }
 
     deleteContact = async () => {
-        await ContactService.deleteContact(this.state.contact._id)
+        await this.props.deleteContact(this.state.contact._id)
         this.goToContactPage()
     }
 
@@ -62,11 +71,21 @@ export default class ContactEdit extends React.Component {
             </section>
         )
     }
-    async componentDidMount() {
-        const id = this.props.match.params.id
-        if (id) {
-            const contact = await ContactService.getContactById(id)
-            this.setState({ contact, isNew: false })
-        }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        contact: state.contact.currContact
     }
 }
+
+const mapDispatchToProps = {
+    loadCurrContact,
+    saveContact,
+    deleteContact
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ContactEdit)

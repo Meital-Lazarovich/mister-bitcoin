@@ -6,9 +6,9 @@ import ContactPreview from './ContactPreview'
 export default function ({ contacts }) {
     return (
         <section className="contact-list flex-center column">
-            {contacts.map(contact => {
+            {contacts.map((contact, idx) => {
                 return (
-                    <Link to={`/contact/${contact._id}`} key={contact._id}>
+                    <Link to={`/contact/${contact._id}`} key={idx}>
                         <ContactPreview contact={contact}></ContactPreview>
                     </Link>
                 )

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContactService from '../services/ContactService'
+import ContactService from '../ContactService'
 import ContactList from '../cmps/ContactList'
 import ContactFilter from '../cmps/ContactFilter';
 import {Link} from 'react-router-dom'

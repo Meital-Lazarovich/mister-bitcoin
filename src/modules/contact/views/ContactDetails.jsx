@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import ContactService from '../services/ContactService';
+import ContactService from '../ContactService';
 
 export default class ContactDetails extends React.Component {
     state = {

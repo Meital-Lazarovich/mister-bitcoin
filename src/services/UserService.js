@@ -1,5 +1,7 @@
 export default {
-    getUser
+    getUser,
+    signup,
+    addMove
 }
 
 function getUser() {
@@ -8,4 +10,12 @@ function getUser() {
         coins: 100,
         moves: []
     }
+}
+
+function signup(name) {
+
+}
+
+function addMove(contact, amount) {
+
 }

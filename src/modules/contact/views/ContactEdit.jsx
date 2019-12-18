@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactService from '../services/ContactService';
+import ContactService from '../ContactService';
 import {Link} from 'react-router-dom';
 
 export default class ContactEdit extends React.Component {

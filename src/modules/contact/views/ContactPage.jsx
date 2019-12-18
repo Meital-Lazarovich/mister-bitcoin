@@ -1,23 +1,23 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+import {loadContacts} from '../actions'
+import { connect } from 'react-redux';
 
-import ContactService from '../ContactService'
 import ContactList from '../cmps/ContactList'
 import ContactFilter from '../cmps/ContactFilter';
-import {Link} from 'react-router-dom'
 
-export default class ContactPage extends React.Component {
-    state = {
-        contacts: [],
-    }
-
+class ContactPage extends React.Component {
     handleFilter = async (val) => {
         const filter = {term: val}
-        const contacts = await ContactService.getContacts(filter)
-        this.setState({ contacts })
+        this.props.loadContacts(filter)
+    }
+
+    async componentDidMount() {
+        this.props.loadContacts()
     }
 
     render() {
-        const { contacts } = this.state
+        const { contacts } = this.props
         if (contacts) return (
             <section className="contact-page flex-center column">
                 <ContactFilter handleFilter={this.handleFilter}></ContactFilter>
@@ -27,8 +27,19 @@ export default class ContactPage extends React.Component {
         )
         else return <div>no contacts</div>
     }
-    async componentDidMount() {
-        const contacts = await ContactService.getContacts()
-        this.setState({ contacts })
+}
+
+const mapStateToProps = (state) => {
+    return {
+        contacts: state.contact.contacts
     }
 }
+
+const mapDispatchToProps = {
+    loadContacts
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ContactPage)

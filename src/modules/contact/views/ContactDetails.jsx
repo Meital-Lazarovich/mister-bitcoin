@@ -13,7 +13,7 @@ class ContactDetails extends React.Component {
     }
 
     async componentDidMount() {
-        this.props.loadUser()
+        await this.props.loadUser()
         if (!this.props.user) {
             this.props.history.push('/signup')
             return
@@ -25,7 +25,6 @@ class ContactDetails extends React.Component {
 
     updateAmount = (ev) => {
         const { value } = ev.target
-        console.log('value', value);
         this.setState({ amount: value })
     }
 
@@ -58,7 +57,7 @@ class ContactDetails extends React.Component {
                 <h3>Phone: {contact.phone}</h3>
                 <h3>Email: {contact.email}</h3>
                 <TransferFund contact={contact} addMove={this.addMove} updateAmount={this.updateAmount}></TransferFund>
-                <MoveList moves={movesToContact}></MoveList>
+                <MoveList moves={movesToContact} title={'Your Moves'}></MoveList>
             </section>
         )
         else return <h1>Unknown contact</h1>

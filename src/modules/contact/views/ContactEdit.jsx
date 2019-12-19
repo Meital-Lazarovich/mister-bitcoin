@@ -14,7 +14,7 @@ class ContactEdit extends React.Component {
         isNew: true
     }
     
-    async componentDidMount() {
+    componentDidMount() {
         this.props.loadUser()
         if (!this.props.user) {
             this.props.history.push('/signup')

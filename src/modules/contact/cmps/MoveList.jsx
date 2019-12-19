@@ -1,10 +1,12 @@
 import React from 'react'
+import MovePreview from './MovePreview';
 
-export default function MoveList({ moves }) {
+export default function MoveList({ title, moves }) {
     if (moves && moves.length) return (
         <section className="move-list">
+            <h1>{title}</h1>
             {moves.map((move, idx) => {
-                return <h1 key={idx}>{move.amount}</h1>
+                return <MovePreview key={idx} move={move}></MovePreview>
             })}
         </section>
     )

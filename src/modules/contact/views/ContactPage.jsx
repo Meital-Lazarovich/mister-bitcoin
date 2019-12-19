@@ -13,7 +13,7 @@ class ContactPage extends React.Component {
         this.props.loadContacts(filter)
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.props.loadUser()
         if (!this.props.user) {
             this.props.history.push('/signup')

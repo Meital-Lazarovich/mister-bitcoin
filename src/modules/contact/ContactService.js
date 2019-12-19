@@ -1,7 +1,7 @@
 export default {
   getContacts,
   getContactById,
-  deleteContact,
+  removeContact,
   saveContact,
   getEmptyContact
 }
@@ -156,7 +156,7 @@ function getContactById (id) {
     })
 }
 
-function deleteContact(id) {
+function removeContact(id) {
   return new Promise((resolve, reject) => { 
     const index = contacts.findIndex( contact => contact._id === id)
     if (index !== -1) {

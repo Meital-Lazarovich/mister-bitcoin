@@ -1,18 +1,24 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import {loadContacts} from '../actions'
+import { Link } from 'react-router-dom'
+import { loadContacts } from '../ContactActions';
+import { loadUser } from '../../user/UserActions'
 import { connect } from 'react-redux';
 
 import ContactList from '../cmps/ContactList'
 import ContactFilter from '../cmps/ContactFilter';
 
 class ContactPage extends React.Component {
-    handleFilter = async (val) => {
-        const filter = {term: val}
+    handleFilter = async val => {
+        const filter = { term: val }
         this.props.loadContacts(filter)
     }
 
     async componentDidMount() {
+        this.props.loadUser()
+        if (!this.props.user) {
+            this.props.history.push('/signup')
+            return
+        }
         this.props.loadContacts()
     }
 
@@ -29,14 +35,16 @@ class ContactPage extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        contacts: state.contact.contacts
+        contacts: state.contact.contacts,
+        user: state.user.user
     }
 }
 
 const mapDispatchToProps = {
-    loadContacts
+    loadContacts,
+    loadUser
 }
 
 export default connect(

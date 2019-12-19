@@ -1,9 +1,5 @@
 import ContactService from './ContactService'
 
-const setCurrContact = (contact) => {
-    return { type: 'SET_CURR_CONTACT', contact }
-}
-
 export const loadCurrContact = (id) => {
     return async (dispatch) => {
         const contact = await ContactService.getContactById(id)
@@ -11,8 +7,8 @@ export const loadCurrContact = (id) => {
     }
 }
 
-const setContacts = (contacts) => {
-    return { type: 'SET_CONTACTS', contacts }
+const setCurrContact = (contact) => {
+    return { type: 'SET_CURR_CONTACT', contact }
 }
 
 export const loadContacts = (filter) => {
@@ -22,24 +18,28 @@ export const loadContacts = (filter) => {
     }
 }
 
-const updateContact = (contact) => {
-    return {type: 'SAVE_CONTACT', contact}
+const setContacts = (contacts) => {
+    return { type: 'SET_CONTACTS', contacts }
 }
 
 export const saveContact = (contact) => {
     return async (dispatch) => {
         const savedContact = await ContactService.saveContact(contact)
-        return dispatch(updateContact(savedContact))
+        return dispatch(setSaveContact(savedContact))
     }
 }
 
-const removeContact = (id) => {
-    return {type: 'DELETE_CONTACT', id}
+const setSaveContact = (contact) => {
+    return { type: 'SAVE_CONTACT', contact }
 }
 
-export const deleteContact = (id) => {
+export const removeContact = (id) => {
     return async (dispatch) => {
-        await ContactService.deleteContact(id)
-        return dispatch(removeContact(id))
+        await ContactService.removeContact(id)
+        return dispatch(setRemoveContact(id))
     }
+}
+
+const setRemoveContact = (id) => {
+    return { type: 'DELETE_CONTACT', id }
 }

@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 
-import contactReducer from './modules/contact/reducers'
+import ContactReducer from './modules/contact/ContactReducers'
+import UserReducers from './modules/user/UserReducers';
 
 const rootReducer = combineReducers({
-    contact: contactReducer
+    contact: ContactReducer,
+    user: UserReducers
 })
 
 const store = createStore(

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {loadCurrContact, saveContact, deleteContact} from '../actions';
+import {loadCurrContact, saveContact, removeContact} from '../ContactActions';
+import { loadUser } from '../../user/UserActions'
 import {connect} from 'react-redux'
 
 class ContactEdit extends React.Component {
@@ -14,6 +15,11 @@ class ContactEdit extends React.Component {
     }
     
     async componentDidMount() {
+        this.props.loadUser()
+        if (!this.props.user) {
+            this.props.history.push('/signup')
+            return
+        }
         const id = this.props.match.params.id
         if (id) {
             this.props.loadCurrContact(id)
@@ -39,8 +45,8 @@ class ContactEdit extends React.Component {
         this.goToContactPage()
     }
 
-    deleteContact = async () => {
-        await this.props.deleteContact(this.state.contact._id)
+    removeContact = async () => {
+        await this.props.removeContact(this.state.contact._id)
         this.goToContactPage()
     }
 
@@ -54,7 +60,7 @@ class ContactEdit extends React.Component {
             <section className="contact-edit">
                 <div className="actions">
                     <Link to={`/contact/${contact._id}`}>Back</Link>
-                    {!isNew && <button onClick={this.deleteContact}>Delete</button>}
+                    {!isNew && <button onClick={this.removeContact}>Delete</button>}
                 </div>
                 <form onSubmit={this.saveContact} className="flex-center column">
                     <label> Name:
@@ -73,16 +79,18 @@ class ContactEdit extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        contact: state.contact.currContact
+        contact: state.contact.currContact,
+        user: state.user.user
     }
 }
 
 const mapDispatchToProps = {
     loadCurrContact,
     saveContact,
-    deleteContact
+    removeContact,
+    loadUser
 }
 
 export default connect(

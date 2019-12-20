@@ -1,9 +1,20 @@
 .header {
-    background-color: $clr4;
+    background-color: #2c373dc4;
+    padding: 0 10px;
     a {
         display: block;
         padding: 15px;
         margin: 0 15px;
         font-size: 1.2em;
+    }
+    h1 {
+        font-family: Bree;
+        color: $clr1;
+        font-size: 1.7em;
+        margin: 0 15px 10px;
+        span {
+            font-size: 1.3em;
+            color: $clr3;
+        }
     }
 }

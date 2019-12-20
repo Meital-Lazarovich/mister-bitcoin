@@ -25,7 +25,7 @@ class ContactPage extends React.Component {
     render() {
         const { contacts } = this.props
         if (contacts) return (
-            <section className="contact-page flex-center column">
+            <section className="contact-page container flex-center column">
                 <ContactFilter handleFilter={this.handleFilter}></ContactFilter>
                 <Link to={'/contact/edit'}>Add new contact</Link>
                 <ContactList contacts={contacts}></ContactList>

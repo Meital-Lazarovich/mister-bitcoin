@@ -57,7 +57,7 @@ class ContactEdit extends React.Component {
     render() {
         const { contact, isNew } = this.state
         return (
-            <section className="contact-edit">
+            <section className="contact-edit container">
                 <div className="actions">
                     <Link to={`/contact/${contact._id}`}>Back</Link>
                     {!isNew && <button onClick={this.removeContact}>Delete</button>}

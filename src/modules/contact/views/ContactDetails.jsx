@@ -48,7 +48,7 @@ class ContactDetails extends React.Component {
         const { contact } = this.props
         const { movesToContact } = this.state
         if (contact) return (
-            <section className="contact-details">
+            <section className="contact-details container">
                 <div className="nav">
                     <Link to={'/contact'}>Back</Link>
                     <Link to={`/contact/edit/${contact._id}`}>Edit</Link>

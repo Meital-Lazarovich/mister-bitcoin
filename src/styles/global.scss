@@ -5,8 +5,10 @@
 // BASICS
 @import 'basics/helpers';
 @import 'basics/base';
+@import 'basics/layout';
 
 // VIEWS 
+@import 'views/home-page';
 
 // COMPONENTS
 @import 'components/header';

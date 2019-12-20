@@ -1,0 +1,24 @@
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 30px;
+    min-height: calc(100vh - 60px);
+    background-color: #101010d9;
+
+    @media (max-width: 1040px) {
+        max-width: 980px;
+    }
+
+    @media (max-width: 620px) {
+        max-width: 500px;
+    }
+
+    @media (max-width: 520px) {
+        max-width: 430px;
+    }
+}
+
+.med-container {
+    max-width: 450px;
+}

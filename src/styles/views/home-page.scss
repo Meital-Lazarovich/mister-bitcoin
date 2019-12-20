@@ -1,0 +1,23 @@
+.home-page {
+    h1 {
+        font-size: 1.7em;
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid $clr2;
+    }
+    .info {
+        padding-bottom: 50px;
+        border-bottom: 1px solid $clr2;
+        margin-bottom: 30px;
+        h2 {
+            color: $clr4;
+            margin-bottom: 10px;
+        }
+        h3 {
+            margin-bottom: 5px;
+            span {
+                margin-left: 10px;
+            }
+        }
+    }
+}

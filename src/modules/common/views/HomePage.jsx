@@ -12,7 +12,7 @@ class HomePage extends React.Component {
 
     async componentDidMount() {
         this.props.loadUser()
-        const {user} = this.props
+        const { user } = this.props
         if (!user) {
             this.props.history.push('/signup')
             return
@@ -25,11 +25,13 @@ class HomePage extends React.Component {
         const { rate } = this.state
         const { user } = this.props
         if (user) return (
-            <section className="home-page">
+            <section className="home-page container">
                 <h1>Hello, {user.name}</h1>
+                <div className="info">
                 <h2>Current Balance:</h2>
-                <h3>Bit: ₿ {user.coins}</h3>
-                <h3>USD: $ {rate}</h3>
+                    <h3>BIT : <span className="bit">₿ {user.coins}</span></h3>
+                    <h3>USD : <span className="usd">$ {rate}</span></h3>
+                </div>
                 <MoveList title={'Your Last Moves'} moves={user.moves.slice(0, 3)}></MoveList>
             </section>
         )

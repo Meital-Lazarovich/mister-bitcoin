@@ -2,6 +2,7 @@ import React from 'react'
 import BitcoinService from '../services/BitcoinService'
 import { loadUser } from '../../user/UserActions'
 import { connect } from 'react-redux'
+import MoveList from '../../contact/cmps/MoveList'
 
 
 class HomePage extends React.Component {
@@ -11,11 +12,12 @@ class HomePage extends React.Component {
 
     async componentDidMount() {
         this.props.loadUser()
-        if (!this.props.user) {
+        const {user} = this.props
+        if (!user) {
             this.props.history.push('/signup')
             return
         }
-        const rate = await BitcoinService.getRate(1);
+        const rate = await BitcoinService.getRate(user.coins);
         this.setState({ rate })
     }
 
@@ -25,8 +27,10 @@ class HomePage extends React.Component {
         if (user) return (
             <section className="home-page">
                 <h1>Hello, {user.name}</h1>
-                <h3>Coins: {user.coins}</h3>
-                <h3>BTC: {rate}</h3>
+                <h2>Current Balance:</h2>
+                <h3>Bit: ₿ {user.coins}</h3>
+                <h3>USD: $ {rate}</h3>
+                <MoveList title={'Your Last Moves'} moves={user.moves.slice(0, 3)}></MoveList>
             </section>
         )
         else return <div>Something went wrong...</div>

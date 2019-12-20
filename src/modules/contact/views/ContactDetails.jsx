@@ -56,8 +56,8 @@ class ContactDetails extends React.Component {
                 <h3>Name: {contact.name}</h3>
                 <h3>Phone: {contact.phone}</h3>
                 <h3>Email: {contact.email}</h3>
-                <TransferFund contact={contact} addMove={this.addMove} updateAmount={this.updateAmount}></TransferFund>
-                <MoveList moves={movesToContact} title={'Your Moves'}></MoveList>
+                <TransferFund contact={contact} addMove={this.addMove} updateAmount={this.updateAmount}/>
+                <MoveList moves={movesToContact} title={'Your Moves'}/>
             </section>
         )
         else return <h1>Unknown contact</h1>

@@ -29,7 +29,7 @@ class SignupPage extends React.Component {
 
     render() {
         return (
-            <section className="signup-page container">
+            <section className="signup-page container flex align-center column">
                 <h3>Please type your name to continue</h3>
                 <form onSubmit={this.signup}>
                     <input type="text" onChange={this.updateName} />

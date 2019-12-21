@@ -10,14 +10,20 @@
         border-bottom: 1px solid $clr2;
         margin-bottom: 30px;
         h2 {
-            color: $clr4;
             margin-bottom: 10px;
         }
         h3 {
+            color: $clr4;
             margin-bottom: 5px;
             span {
                 margin-left: 10px;
             }
+        }
+    }
+    .move-list {
+        h1 {
+            border-bottom: none;
+            margin-bottom: 20px;
         }
     }
 }

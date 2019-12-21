@@ -1,0 +1,17 @@
+.move-list {
+    h1 {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    .move-preview {
+        margin-bottom: 20px;
+        color: $clr4;
+        flex-wrap: wrap;
+        p {
+            width: 175px;
+            &:first-child {
+                margin-right: 20px;
+            }
+        }
+    }
+}

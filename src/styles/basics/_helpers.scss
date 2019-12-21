@@ -22,11 +22,9 @@
     align-self: center;
 }
 
-
 .column {
     flex-direction: column;
 }
-
 
 .wrap {
     flex-wrap: wrap;
@@ -47,11 +45,7 @@
 }
 
 .bold {
-    font-family: Raleway-Bold;
-}
-
-.semi {
-    font-family: Raleway-Semi;
+    font-family: Titillium-Bold;
 }
 
 .center {
@@ -62,7 +56,7 @@
     flex-grow: 1;
 }
 
-.profile-link {
+.hover-link {
     cursor: pointer;
 
     &:hover {
@@ -101,4 +95,11 @@
 
 .width-100 {
     width: 100%;
+}
+
+.contact-img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 50%;
 }

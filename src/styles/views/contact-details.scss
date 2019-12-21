@@ -1,0 +1,40 @@
+.contact-details {
+    .nav {
+        margin-bottom: 30px;
+    }
+    .info {
+        margin: 0 auto 50px;
+        max-width: 420px;
+        flex-wrap: wrap;
+    }
+    .transfer-fund {
+        form {
+            margin: 20px 0 35px;
+            input {
+                margin-left: 5px;
+                margin-right: 15px;
+                border: none;
+                border-radius: 5px;
+                padding: 6px;
+                color: black;
+            }
+        }
+    }
+    .move-list {
+        h1 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .move-preview {
+            margin-bottom: 20px;
+            color: $clr4;
+            flex-wrap: wrap;
+            p {
+                width: 175px;
+                &:first-child {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

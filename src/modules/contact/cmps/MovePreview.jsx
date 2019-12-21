@@ -8,7 +8,7 @@ export default function MovePreview({ move }) {
         return `${date}, ${hour}`
     }
     return (
-        <section className="move-preview">
+        <section className="move-preview flex align-center">
             <p><span>At: </span>{getTime()}</p>
             <p><span>Amount: </span>{move.amount} coins</p>
         </section>

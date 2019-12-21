@@ -1,0 +1,21 @@
+.contact-edit {
+    .actions {
+        margin-bottom: 30px;
+    }
+    form {
+        label {
+            margin-bottom: 15px;
+            input {
+                margin-left: 20px;
+                border: none;
+                border-radius: 5px;
+                padding: 8px;
+                color: black;
+                width: 200px;
+            }
+        }
+        button {
+            margin-top: 20px;
+        }
+    }
+}

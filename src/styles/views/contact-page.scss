@@ -1,0 +1,24 @@
+.contact-page {
+    .contact-filter {
+        padding: 7px 20px;
+        width: 300px;
+        background-color: transparent;
+        border: 1px solid $clr4;
+        font-size: 18px;
+        border-radius: 7px;
+        margin-bottom: 15px;
+    }
+    .new-contact {
+        margin-bottom: 15px;
+    }
+    .contact-list {
+        flex-wrap: wrap;
+        .contact-preview {
+            margin: 15px 20px;
+            width: 230px;
+            h4 {
+                color: $clr4;
+            }
+        }
+    }
+}

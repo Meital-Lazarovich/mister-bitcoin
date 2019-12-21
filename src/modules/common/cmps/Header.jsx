@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
-        <section className="header flex space-between align-center">
+        <section className="header med-container flex space-between align-center">
             <h1>Mr. <span>₿</span>itcoin</h1>
             <nav className="flex-center">
                 <Link to={'/'}>Home</Link>

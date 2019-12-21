@@ -41,7 +41,7 @@ class ContactDetails extends React.Component {
         const { contact } = this.props
         if (!moves || !moves.length) return
         const movesToContact = moves.filter(move => move.toId === contact._id)
-        this.setState({movesToContact})
+        this.setState({ movesToContact })
     }
 
     render() {
@@ -49,15 +49,20 @@ class ContactDetails extends React.Component {
         const { movesToContact } = this.state
         if (contact) return (
             <section className="contact-details container">
-                <div className="nav">
-                    <Link to={'/contact'}>Back</Link>
-                    <Link to={`/contact/edit/${contact._id}`}>Edit</Link>
+                <div className="nav flex space-between align-center">
+                    <Link className="back hover-link" to={'/contact'}>Back</Link>
+                    <Link className="link-edit hover-link" to={`/contact/edit/${contact._id}`}>Edit Contact Details</Link>
                 </div>
-                <h3>Name: {contact.name}</h3>
-                <h3>Phone: {contact.phone}</h3>
-                <h3>Email: {contact.email}</h3>
-                <TransferFund contact={contact} addMove={this.addMove} updateAmount={this.updateAmount}/>
-                <MoveList moves={movesToContact} title={'Your Moves'}/>
+                <div className="flex info space-between align-center">
+                    <img className="contact-img" src={contact.img} alt="" />
+                    <div>
+                        <h3>Name: {contact.name}</h3>
+                        <h3>Phone: {contact.phone}</h3>
+                        <h3>Email: {contact.email}</h3>
+                    </div>
+                </div>
+                <TransferFund contact={contact} addMove={this.addMove} updateAmount={this.updateAmount} />
+                <MoveList moves={movesToContact} title={'Your Moves'} />
             </section>
         )
         else return <h1>Unknown contact</h1>

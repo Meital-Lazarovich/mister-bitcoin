@@ -16,10 +16,10 @@ class ContactEdit extends React.Component {
     
     componentDidMount() {
         this.props.loadUser()
-        if (!this.props.user) {
-            this.props.history.push('/signup')
-            return
-        }
+        // if (!this.props.user) {
+        //     this.props.history.push('/signup')
+        //     return
+        // }
         const id = this.props.match.params.id
         if (id) {
             this.props.loadCurrContact(id)
@@ -58,9 +58,9 @@ class ContactEdit extends React.Component {
         const { contact, isNew } = this.state
         return (
             <section className="contact-edit container">
-                <div className="actions">
-                    <Link to={`/contact/${contact._id}`}>Back</Link>
-                    {!isNew && <button onClick={this.removeContact}>Delete</button>}
+                <div className="actions flex space-between align-center">
+                    <Link className="hover-link" to={`/contact/${contact._id}`}>Back</Link>
+                    {!isNew && <div className="hover-link" onClick={this.removeContact}>Delete This Contact</div>}
                 </div>
                 <form onSubmit={this.saveContact} className="flex-center column">
                     <label> Name:
